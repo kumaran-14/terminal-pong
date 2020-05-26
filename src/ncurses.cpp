@@ -23,7 +23,7 @@ void ncurses::nodelay() {
 
 void ncurses::curs_set(int option) { ::curs_set(option); }
 
-void ncurses::setScreenDimensions(int &height, int &width) {
+void ncurses::setScreenDimensions(uint32_t &height, uint32_t &width) {
   getmaxyx(stdscr, height, width);
 }
 
@@ -35,20 +35,24 @@ void ncurses::draw(uint32_t y, uint32_t x, const std::string &str) {
   mvprintw(y, x, str.c_str());
 }
 
-void ncurses::draw(ncurses::window_t *win, uint32_t y, uint32_t x, const std::string &str) {
+void ncurses::draw(ncurses::window_t *win, uint32_t y, uint32_t x,
+                   const std::string &str) {
   mvwprintw(win, y, x, str.c_str());
 }
 
 void ncurses::refresh() { ::refresh(); }
 
-void ncurses::refresh(WINDOW *win) { wrefresh(win); }
+void ncurses::terminate() { ::endwin(); }
 
-void ncurses::terminate() { endwin(); }
+void ncurses::clear() { ::clear(); }
 
-void ncurses::clear() {
-  clear();
+void ncurses::typeahead() { ::typeahead(-1); }
+
+ncurses::window_t *ncurses::createWindow(uint32_t height, uint32_t width, uint32_t y,
+                                uint32_t x) {
+  return ::newwin(height, width, y, x);
 }
 
-void ncurses::typeahead() {
-  ::typeahead(-1);
-}
+void ncurses::refresh(ncurses::window_t *win) { wrefresh(win); }
+
+void ncurses::destroyWindow(ncurses::window_t *win) { ::delwin(win); }

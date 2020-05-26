@@ -3,20 +3,25 @@
  * Defines window class using ncurses API
  */
 
+#pragma once
+#include "ncurses.h"
 #include <curses.h>
+#include <memory>
 
-namespace world {
+namespace display {
 class Window {
 public:
 
-    Window();
+  Window(uint32_t height, uint32_t width, uint32_t y, uint32_t x);
 
-    void drawAtPosition();
+  void drawAtPosition(uint32_t y, uint32_t x, std::string& str);
 
-    ~Window();
+  void refresh();
+
+  ~Window();
 
 private:
-    int height, width, y, x;
-    WINDOW* _win;
+  uint32_t height, width, y, x;
+  ncurses::window_t* _win;
 };
-} // world
+} // namespace display

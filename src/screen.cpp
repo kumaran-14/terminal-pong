@@ -2,8 +2,9 @@
  * screen.cpp
  * Implementation of Game Screen
  */
-#include <ncurses.h>
-#include <screen.h>
+#include "ncurses.h"
+#include "screen.h"
+#include <iostream>
 
 namespace game {
 
@@ -14,8 +15,8 @@ Screen::Screen() {
   ncurses::noecho();
   ncurses::keypad();
   ncurses::meta();
-  ncurses::nodelay();
-  // TODO use enum or constant
+//  ncurses::nodelay();
+//  // TODO use enum or constant
   ncurses::curs_set(0);
   ncurses::typeahead();
 
@@ -36,6 +37,17 @@ void Screen::setDimensions() {
 
 std::tuple<uint32_t, uint32_t> Screen::getDimensions() {
   return {this->height, this->width};
+}
+
+void Screen::refresh() {
+  ncurses::refresh();
+}
+display::Window* Screen::getArena() {
+  return this->arena.get();
+}
+
+void Screen::setArena(std::unique_ptr<display::Window> &arena_window) {
+  this->arena = std::move(arena_window);
 }
 
 } // game

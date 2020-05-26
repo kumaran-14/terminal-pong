@@ -9,9 +9,10 @@ find_package(Curses REQUIRED)
 
 add_executable(pong
 #        src/ball.cpp
-        src/game.cpp
         src/ncurses.cpp
         src/screen.cpp
+        src/window.cpp
+        src/main.cpp
 #        src/paddle.cpp
         )
 target_link_libraries(pong ${CURSES_LIBRARIES})

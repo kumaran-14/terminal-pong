@@ -6,8 +6,9 @@
 #pragma once
 
 #include "window.h"
-#include <tuple>
 #include <cstdint>
+#include <memory>
+#include <tuple>
 
 namespace game {
 
@@ -20,15 +21,22 @@ public:
 
   std::tuple<uint32_t, uint32_t > getDimensions();
 
-  void drawAtPosition(const uint32_t y, const uint32_t x, const std::string &str);
+  void drawAtPosition(uint32_t y, uint32_t x, const std::string &str);
 
+  void refresh();
 
+  display::Window* getArena();
+
+  void setArena(std::unique_ptr<display::Window> &arena_window);
+
+  /*
+   * call terminate and clear screen
+   */
   ~Screen();
 
 private:
-    int height, width;
-    // std::unique_ptr<Window> arena;
-    // std::unique_ptr<Window> menu;
+    uint32_t height, width;
+    std::unique_ptr<display::Window> arena;
 };
 
 
