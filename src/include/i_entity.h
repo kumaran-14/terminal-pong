@@ -3,6 +3,10 @@
  * Defines entity interface
  */
 
+#pragma once
+#include "screen.h"
+#include "world.fwd.h"
+
 namespace world {
 
 /*
@@ -16,12 +20,12 @@ public:
     /*
      * Update position/dimension using some logic
      */
-    virtual void update() = 0;
+    virtual void update(game::World* hello) = 0;
 
     /*
      *  Display entity on screen
      */
-    virtual void render() = 0;
+    virtual void render(game::Screen* screen) = 0;
 };
 
 }

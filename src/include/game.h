@@ -12,7 +12,7 @@ namespace game {
 class Game {
 public:
 
-  Game(const std::unique_ptr<world::World> &World,
+  Game(const std::unique_ptr<game::World> &World,
        const std::unique_ptr<Screen> &Screen);
 
   void start();
@@ -23,7 +23,7 @@ private:
     void gameLoop();
 
     bool isRunning;
-    std::unique_ptr<world::World> world;
+    std::unique_ptr<game::World> world;
     std::unique_ptr<Screen> screen;
     int score;
 };

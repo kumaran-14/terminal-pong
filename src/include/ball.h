@@ -6,26 +6,32 @@
 #pragma once
 
 #include "i_entity.h"
+#include "screen.h"
+#include <string>
 
 namespace world {
 
-    class Ball: public IEntity {
+class Ball : public IEntity {
 
-    public:
-        Ball();
+public:
+  Ball();
+  Ball(double y, double x, double dy, double dx, int32_t length,
+         const std::string &body_str);
 
-        void update() override;
+  void moveRight();
 
-        void render() override;
+  void moveLeft();
 
-    private:
+  void update(game::World *world) override;
 
-        double y, x, dx, dy;
+  void render(game::Screen *screen) override;
 
-        int length;
+private:
+  double y, x, dx, dy;
 
-        string body;
+  int length;
 
-    };
+  std::string body = "";
+};
 
-} // world
+} // namespace world
