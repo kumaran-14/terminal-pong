@@ -2,8 +2,6 @@
  * ball.cpp
  */
 
-#pragma once
-
 #include "include/ball.h"
 #include "include/ncurses.h"
 #include "world.h"
@@ -17,11 +15,17 @@ Ball::Ball(double y, double x, double dy, double dx, int32_t length,
     this->body += body_str;
 }
 
-void Ball::update(game::World *world) {
-  // how ball updates;
-  this->x += this->dx;
-  this->y += this->dy;
+void Ball::moveRight(){
+;
+};
 
+void Ball::moveLeft() {}
+
+void Ball::moveDown() {}
+
+void Ball::moveUp() {}
+
+void Ball::update(game::World *world) {
   // check for end of world collisions
   if (this->x <= 1) {
     this->x = 1;
@@ -39,6 +43,6 @@ void Ball::update(game::World *world) {
 
 void Ball::render(game::Screen *screen) {
   screen->getArena()->drawAtPosition(this->y, this->x, this->body);
-};
+}
 
 } // namespace world

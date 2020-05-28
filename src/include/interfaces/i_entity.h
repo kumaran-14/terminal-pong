@@ -15,7 +15,7 @@ namespace world {
 class IEntity {
 public:
 
-    virtual ~IEntity() {}
+    virtual ~IEntity() = default;
 
     /*
      * Update position/dimension using some logic

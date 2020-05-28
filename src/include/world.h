@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "i_entity.h"
+#include "interfaces/i_entity.h"
 #include <utility>
 
 namespace game {
@@ -14,23 +14,22 @@ namespace game {
  */
 class World {
 public:
-    World();
+  World(uint32_t height, uint32_t width,
+        std::unique_ptr<world::IEntity> &paddle_1,
+        std::unique_ptr<world::IEntity> &paddle_2,
+        std::unique_ptr<world::IEntity> &ball);
 
-    void update();
+  void update();
 
-    void render();
-    uint32_t getHeight() const;
-    uint32_t getWidth() const;
-    const std::unique_ptr<world::IEntity> &getPaddle1() const;
-    const std::unique_ptr<world::IEntity> &getPaddle2() const;
-    const std::unique_ptr<world::IEntity> &getBall() const;
-
-    std::pair<world::IEntity*, world::IEntity*> detectCollisions();
-
-    ~World();
+  void render();
+  [[nodiscard]] uint32_t getHeight() const;
+  [[nodiscard]] uint32_t getWidth() const;
+  [[nodiscard]] const std::unique_ptr<world::IEntity> &getPaddle1() const;
+  [[nodiscard]] const std::unique_ptr<world::IEntity> &getPaddle2() const;
+  [[nodiscard]] const std::unique_ptr<world::IEntity> &getBall() const;
 
 private:
-    uint32_t height, width;
-    std::unique_ptr<world::IEntity> paddle_1, paddle_2, ball;
+  uint32_t height{}, width{};
+  std::unique_ptr<world::IEntity> paddle_1, paddle_2, ball;
 };
-} // game
+} // namespace game

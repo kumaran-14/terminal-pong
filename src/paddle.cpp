@@ -2,7 +2,6 @@
  * paddle.cpp
  */
 
-#pragma once
 
 #include "include/paddle.h"
 #include "include/ncurses.h"

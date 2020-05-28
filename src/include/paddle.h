@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "i_entity.h"
+#include "interfaces/i_entity.h"
 #include "screen.h"
 #include <string>
 
@@ -14,7 +14,6 @@ namespace world {
 class Paddle : public IEntity {
 
 public:
-  Paddle();
   Paddle(double y, double x, double dy, double dx, int32_t length,
          const std::string &body_str);
 

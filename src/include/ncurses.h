@@ -14,6 +14,8 @@
 
 namespace ncurses {
 
+
+
 typedef WINDOW window_t;
 
 // ncurses stdscr options
