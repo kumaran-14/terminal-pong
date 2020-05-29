@@ -15,9 +15,7 @@ Ball::Ball(double y, double x, double dy, double dx, int32_t length,
     this->body += body_str;
 }
 
-void Ball::moveRight(){
-;
-};
+void Ball::moveRight() { ; };
 
 void Ball::moveLeft() {}
 

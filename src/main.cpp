@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
   // game
   try {
-    unique_ptr<game::Screen> screen(new game::Screen());
+    auto screen = make_unique<game::Screen>();
     auto [height, width] = screen->getDimensions();
 
     if (height < MIN_SCREEN_HEIGHT || width < MIN_SCREEN_WIDTH) {
@@ -82,11 +82,8 @@ int main(int argc, char **argv) {
         make_unique<game::InputHandler>(make_unique<game::MoveLeftCommand>(),
                                         make_unique<game::MoveRightCommand>());
 
-    // construct game
-    // game.start();
-
-    //    unique_ptr<game::Game> pingPongGame(new game::Game());
-    //    pingPongGame->start();
+    auto pongGame = make_unique<game::Game>(world, screen, keyboardHandler);
+    pongGame.start();
 
   } catch (std::exception &err) {
     std::cerr << err.what() << std::endl;

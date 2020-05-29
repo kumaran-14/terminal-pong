@@ -2,7 +2,6 @@
  * paddle.cpp
  */
 
-
 #include "include/paddle.h"
 #include "include/ncurses.h"
 #include "world.h"

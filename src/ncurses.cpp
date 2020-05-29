@@ -48,8 +48,8 @@ void ncurses::clear() { ::clear(); }
 
 void ncurses::typeahead() { ::typeahead(-1); }
 
-ncurses::window_t *ncurses::createWindow(uint32_t height, uint32_t width, uint32_t y,
-                                uint32_t x) {
+ncurses::window_t *ncurses::createWindow(uint32_t height, uint32_t width,
+                                         uint32_t y, uint32_t x) {
   return ::newwin(height, width, y, x);
 }
 

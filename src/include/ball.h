@@ -15,7 +15,7 @@ class Ball : public IEntity {
 
 public:
   Ball(double y, double x, double dy, double dx, int32_t length,
-         const std::string &body_str);
+       const std::string &body_str);
 
   void moveRight();
 

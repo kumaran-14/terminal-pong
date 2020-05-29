@@ -7,7 +7,14 @@
 #include <game.h>
 namespace game {
 
-game::Game::Game(const std::unique_ptr<world::World> &world,
-                 const std::unique_ptr<Screen> &screen)
-    : world(std::move(world)), screen(std::move(world)) {}
-} // game
+void Game::start() {}
+void Game::end() { this->isRunning = false; }
+Game::Game(std::unique_ptr<game::World> &world,
+           std::unique_ptr<game::Screen> &screen,
+           std::unique_ptr<game::InputHandler> &keyBoardHandler)
+    : world(std::move(world)), screen(std::move(screen)),
+      keyBoardHandler(std::move(keyBoardHandler)) {}
+void Game::gameLoop() {
+  // main game goes here.
+}
+} // namespace game

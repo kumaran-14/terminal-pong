@@ -14,8 +14,6 @@
 
 namespace ncurses {
 
-
-
 typedef WINDOW window_t;
 
 // ncurses stdscr options
@@ -34,9 +32,9 @@ void meta();
 
 void nodelay();
 
-void curs_set(const int option);
+void curs_set(int option);
 
-void setScreenDimensions(uint32_t &height,uint32_t &width);
+void setScreenDimensions(uint32_t &height, uint32_t &width);
 
 void drawBox();
 
@@ -54,13 +52,12 @@ void typeahead();
 
 // window related functions
 
-window_t* createWindow(uint32_t height, uint32_t width, uint32_t y, uint32_t x);
+window_t *createWindow(uint32_t height, uint32_t width, uint32_t y, uint32_t x);
 
 void drawBox(window_t *win);
 
 void draw(window_t *win, uint32_t y, uint32_t x, const std::string &str);
 
-void destroyWindow(window_t* win);
-
+void destroyWindow(window_t *win);
 
 } // namespace ncurses

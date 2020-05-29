@@ -17,6 +17,7 @@ add_executable(pong
         src/inputHandler.cpp
         src/commands.cpp
         src/world.cpp
+        src/game.cpp
         src/main.cpp
         )
 
