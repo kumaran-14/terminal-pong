@@ -11,14 +11,25 @@ World::World(uint32_t height, uint32_t width,
       paddle_2(std::move(paddle_2)), ball(std::move(ball)) {}
 
 uint32_t World::getHeight() const { return height; }
+
 uint32_t World::getWidth() const { return width; }
-const std::unique_ptr<world::IEntity> &World::getPaddle1() const {
-  //  return paddle_1;
+
+world::IEntity *World::getPaddle1() { return this->paddle_1.get(); }
+
+world::IEntity *World::getPaddle2() { return this->paddle_2.get(); }
+
+world::IEntity *World::getBall() { return this->ball.get(); }
+
+void World::update(game::Game *pongGame) {
+  this->paddle_1->update(this);
+  this->paddle_2->update(this);
+  this->ball->update(this);
 }
-const std::unique_ptr<world::IEntity> &World::getPaddle2() const {
-  //  return paddle_2;
+
+void World::render(game::Screen *screen) {
+  this->paddle_1->render(screen);
+  this->paddle_2->render(screen);
+  this->ball->render(screen);
 }
-const std::unique_ptr<world::IEntity> &World::getBall() const { return ball; }
-void World::render() { ; }
-void World::update() { ; }
+
 } // namespace game

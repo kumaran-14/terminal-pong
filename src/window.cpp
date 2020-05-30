@@ -21,4 +21,8 @@ void Window::refresh() { ncurses::refresh(this->_win); }
 
 display::Window::~Window() { ncurses::destroyWindow(this->_win); }
 
+void Window::drawBorder() { ncurses::drawBox(this->_win); }
+
+void Window::erase() { ncurses::erase(this->_win); }
+
 } // namespace display

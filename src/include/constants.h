@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <cstdint>
 
 namespace constants {
@@ -18,5 +19,6 @@ constexpr double MAX_PADDLE_X_VELOCITY = 2.0;
 constexpr double MAX_PADDLE_Y_VELOCITY = 2.0;
 constexpr double MAX_BALL_X_VELOCITY = 2.0;
 constexpr double MAX_BALL_Y_VELOCITY = 0.0;
+const std::chrono::nanoseconds MS_PER_FRAME(63000000);
 
 } // namespace constants

@@ -15,8 +15,7 @@ Screen::Screen() {
   ncurses::noecho();
   ncurses::keypad();
   ncurses::meta();
-  //  ncurses::nodelay();
-  //  // TODO use enum or constant
+  ncurses::nodelay();
   ncurses::curs_set(0);
   ncurses::typeahead();
 

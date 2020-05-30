@@ -19,8 +19,15 @@ public:
 
   void end();
 
+
 private:
   void gameLoop();
+
+  void update();
+
+  void render();
+
+  void processInput();
 
   bool isRunning = true;
   std::unique_ptr<game::World> world;

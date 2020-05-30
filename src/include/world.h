@@ -7,6 +7,7 @@
 
 #include "interfaces/i_entity.h"
 #include <utility>
+#include "game.h"
 
 namespace game {
 /*
@@ -19,17 +20,22 @@ public:
         std::unique_ptr<world::IEntity> &paddle_2,
         std::unique_ptr<world::IEntity> &ball);
 
-  void update();
+  void update(game::Game*);
 
-  void render();
+  void render(game::Screen*);
+
   [[nodiscard]] uint32_t getHeight() const;
   [[nodiscard]] uint32_t getWidth() const;
-  [[nodiscard]] const std::unique_ptr<world::IEntity> &getPaddle1() const;
-  [[nodiscard]] const std::unique_ptr<world::IEntity> &getPaddle2() const;
-  [[nodiscard]] const std::unique_ptr<world::IEntity> &getBall() const;
+
+  world::IEntity *getPaddle1();
+
+  world::IEntity *getPaddle2();
+
+  world::IEntity* getBall();
 
 private:
   uint32_t height{}, width{};
   std::unique_ptr<world::IEntity> paddle_1, paddle_2, ball;
+
 };
 } // namespace game

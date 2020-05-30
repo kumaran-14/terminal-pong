@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
     const uint32_t ARENA_WIDTH = MIN_SCREEN_WIDTH;
     const uint32_t ARENA_Y = height / 2 - ARENA_HEIGHT / 2;
     const uint32_t ARENA_X = width / 2 - ARENA_WIDTH / 2;
-    const double PLAYER_1_PADDLE_Y = ARENA_HEIGHT - 1;
+    const double PLAYER_1_PADDLE_Y = ARENA_HEIGHT - 2;
     const double PLAYER_1_PADDLE_X = ARENA_WIDTH / 2 - MIN_PADDLE_WIDTH / 2;
     const double PLAYER_2_PADDLE_Y = 1.0;
     const double PLAYER_2_PADDLE_X = ARENA_WIDTH / 2 - MIN_PADDLE_WIDTH / 2;
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
                                                   ARENA_Y, ARENA_X);
     screen->setArena(gameArena);
 
-    // auto cannot be used since they cannot be moved to base class
+    // auto cannot be used since they cannot be 'moved' to base class type ptr
     unique_ptr<world::IEntity> player1Paddle(new world::Paddle(
         PLAYER_1_PADDLE_Y, PLAYER_1_PADDLE_X, MAX_PADDLE_Y_VELOCITY,
         MAX_PADDLE_X_VELOCITY, MIN_PADDLE_WIDTH, PADDLE_BODY_CHARACTER));
@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
                                         make_unique<game::MoveRightCommand>());
 
     auto pongGame = make_unique<game::Game>(world, screen, keyboardHandler);
-    pongGame.start();
+    pongGame->start();
 
   } catch (std::exception &err) {
     std::cerr << err.what() << std::endl;

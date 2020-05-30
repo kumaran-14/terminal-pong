@@ -50,9 +50,13 @@ void terminate();
 
 void typeahead();
 
+void erase();
+
 // window related functions
 
 window_t *createWindow(uint32_t height, uint32_t width, uint32_t y, uint32_t x);
+
+void erase(window_t *win);
 
 void drawBox(window_t *win);
 

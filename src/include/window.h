@@ -17,6 +17,10 @@ public:
 
   void refresh();
 
+  void erase();
+
+  void drawBorder();
+
   ~Window();
 
 private:

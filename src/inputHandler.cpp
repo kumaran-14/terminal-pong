@@ -10,9 +10,17 @@ InputHandler::InputHandler(std::unique_ptr<game::ICommand> moveLeft,
     : leftArrow(std::move(moveLeft)), rightArrow(std::move(moveRight)) {}
 
 ICommand *InputHandler::handleInput() {
-  // getch();
-  // switch();
-  // possible return command ptr;
+  int input = getch();
+  switch (input) {
+  case KEY_RIGHT:
+    return this->rightArrow.get();
+    break;
+  case KEY_LEFT:
+    return this->leftArrow.get();
+    break;
+  default:
+    break;
+  }
   return nullptr;
 }
 } // namespace game
