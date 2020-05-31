@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "game.h"
 #include "interfaces/i_entity.h"
 #include "screen.h"
 #include <string>
@@ -25,7 +26,7 @@ public:
 
   void moveUp();
 
-  void update(game::World *world) override;
+  void update(game::World *world, game::Game* pongGame) override;
 
   void render(game::Screen *screen) override;
 

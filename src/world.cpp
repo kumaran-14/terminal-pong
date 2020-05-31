@@ -21,9 +21,9 @@ world::IEntity *World::getPaddle2() { return this->paddle_2.get(); }
 world::IEntity *World::getBall() { return this->ball.get(); }
 
 void World::update(game::Game *pongGame) {
-  this->paddle_1->update(this);
-  this->paddle_2->update(this);
-  this->ball->update(this);
+  this->paddle_1->update(this, pongGame);
+  this->paddle_2->update(this, pongGame);
+  this->ball->update(this, pongGame);
 }
 
 void World::render(game::Screen *screen) {

@@ -10,6 +10,7 @@
 #include <memory>
 
 namespace game {
+
 class Game {
 public:
   Game(std::unique_ptr<game::World> &world,

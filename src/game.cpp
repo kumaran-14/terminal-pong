@@ -44,11 +44,13 @@ void Game::processInput() {
   ICommand* command = this->keyBoardHandler->handleInput();
   if(command) {
     command->execute(this->world->getPaddle1());
+    command->execute(this->world->getPaddle2());
+
   }
 }
 
 void Game::update() {
-  this->world->update();
+  this->world->update(this);
 }
 void Game::render() {
   auto arena = this->screen->getArena();

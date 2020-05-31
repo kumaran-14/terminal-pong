@@ -6,6 +6,7 @@
 #pragma once
 #include "screen.h"
 #include "world.fwd.h"
+#include "game.fwd.h"
 
 namespace world {
 
@@ -20,7 +21,7 @@ public:
     /*
      * Update position/dimension using some logic
      */
-    virtual void update(game::World* world) = 0;
+    virtual void update(game::World* world, game::Game* pongGame) = 0;
 
     /*
      *  Display entity on screen

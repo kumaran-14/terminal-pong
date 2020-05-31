@@ -19,7 +19,7 @@ void Paddle::moveRight() { this->x += this->dx; };
 
 void Paddle::moveLeft() { this->x -= this->dx; };
 
-void Paddle::update(game::World *world) {
+void Paddle::update(game::World *world, game::Game *pongGame) {
   if (this->x <= 1)
     this->x = 1;
   if (this->x + this->length - 1 >= world->getWidth())
@@ -28,5 +28,8 @@ void Paddle::update(game::World *world) {
 
 void Paddle::render(game::Screen *screen) {
   screen->getArena()->drawAtPosition(this->y, this->x, this->body);
-};
+}
+double Paddle::getX() const { return this->x; }
+double Paddle::getY() const { return this->y; }
+int Paddle::getLength() const { return this->length; };
 } // namespace world

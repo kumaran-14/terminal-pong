@@ -6,8 +6,8 @@
 #pragma once
 
 #include "interfaces/i_entity.h"
+#include "game.fwd.h"
 #include <utility>
-#include "game.h"
 
 namespace game {
 /*
