@@ -4,9 +4,9 @@
  */
 
 #pragma once
+#include "fwd/game.fwd.h"
+#include "fwd/world.fwd.h"
 #include "screen.h"
-#include "world.fwd.h"
-#include "game.fwd.h"
 
 namespace world {
 

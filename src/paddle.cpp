@@ -29,7 +29,10 @@ void Paddle::update(game::World *world, game::Game *pongGame) {
 void Paddle::render(game::Screen *screen) {
   screen->getArena()->drawAtPosition(this->y, this->x, this->body);
 }
+
 double Paddle::getX() const { return this->x; }
+
 double Paddle::getY() const { return this->y; }
+
 int Paddle::getLength() const { return this->length; };
 } // namespace world

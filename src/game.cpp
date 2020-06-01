@@ -16,9 +16,9 @@ void Game::start() {
 void Game::end() { this->isRunning = false; }
 Game::Game(std::unique_ptr<game::World> &world,
            std::unique_ptr<game::Screen> &screen,
-           std::unique_ptr<game::InputHandler> &keyBoardHandler)
+           std::unique_ptr<game::InputHandler> &playerController)
     : world(std::move(world)), screen(std::move(screen)),
-      keyBoardHandler(std::move(keyBoardHandler)) {}
+      playerController(std::move(playerController)) {}
 
 void Game::gameLoop() {
   using namespace std::chrono;
@@ -31,8 +31,7 @@ void Game::gameLoop() {
 
     frameLag += timeElapsed;
     while (frameLag >= constants::MS_PER_FRAME) {
-      this->processInput();
-//      this->processAI();
+      this->processInputs();
       this->update();
       frameLag -= constants::MS_PER_FRAME;
     }
@@ -40,12 +39,14 @@ void Game::gameLoop() {
   }
 }
 
-void Game::processInput() {
-  ICommand* command = this->keyBoardHandler->handleInput();
+void Game::processInputs() {
+  ICommand* command = this->playerController->handlePlayerInput();
   if(command) {
     command->execute(this->world->getPaddle1());
+  }
+  command = this->playerController->handleAiInput(this->world.get());
+  if(command){
     command->execute(this->world->getPaddle2());
-
   }
 }
 

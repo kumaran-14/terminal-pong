@@ -5,8 +5,8 @@
 
 #pragma once
 
+#include "fwd/game.fwd.h"
 #include "interfaces/i_entity.h"
-#include "game.fwd.h"
 #include <utility>
 
 namespace game {

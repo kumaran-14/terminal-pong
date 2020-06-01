@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
 
     unique_ptr<world::IEntity> ball(
         new world::Ball(ARENA_HEIGHT / 2, ARENA_WIDTH / 2, MAX_BALL_Y_VELOCITY,
-                        MAX_BALL_X_VELOCITY, BALL_WIDTH, BALL_BODY_CHARACTER));
+                        0, BALL_WIDTH, BALL_BODY_CHARACTER));
 
     auto world = make_unique<game::World>(ARENA_HEIGHT, ARENA_WIDTH,
                                           player1Paddle, player2Paddle, ball);

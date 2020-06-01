@@ -3,13 +3,16 @@
  */
 
 #include "inputHandler.h"
+#include "paddle.h"
+#include "world.h"
+#include "ball.h"
 
 namespace game {
 InputHandler::InputHandler(std::unique_ptr<game::ICommand> moveLeft,
                            std::unique_ptr<game::ICommand> moveRight)
     : leftArrow(std::move(moveLeft)), rightArrow(std::move(moveRight)) {}
 
-ICommand *InputHandler::handleInput() {
+ICommand *InputHandler::handlePlayerInput() {
   int input = getch();
   switch (input) {
   case KEY_RIGHT:
@@ -21,6 +24,22 @@ ICommand *InputHandler::handleInput() {
   default:
     break;
   }
+  return nullptr;
+}
+
+ICommand *InputHandler::handleAiInput(game::World *world) {
+  auto paddle = dynamic_cast<world::Paddle*>(world->getPaddle2());
+  auto ball = dynamic_cast<world::Ball*>(world->getBall());
+  // calculate distance from ball to paddle center;
+  double dx = - (paddle->getX() + (paddle->getLength() / 2.0) - ball->getX());
+
+  if (dx <= -1)
+    dx = -2;
+  if (dx >= 1)
+    dx = 2;
+
+  if(dx < 0) return this->leftArrow.get();
+  if(dx > 0) return this->rightArrow.get();
   return nullptr;
 }
 } // namespace game

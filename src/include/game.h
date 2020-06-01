@@ -15,11 +15,10 @@ class Game {
 public:
   Game(std::unique_ptr<game::World> &world,
        std::unique_ptr<game::Screen> &screen,
-       std::unique_ptr<game::InputHandler> &keyBoardHandler);
+       std::unique_ptr<game::InputHandler> &playerController);
   void start();
 
   void end();
-
 
 private:
   void gameLoop();
@@ -28,12 +27,13 @@ private:
 
   void render();
 
-  void processInput();
+  void processInputs();
+
 
   bool isRunning = true;
   std::unique_ptr<game::World> world;
   std::unique_ptr<game::Screen> screen;
-  std::unique_ptr<game::InputHandler> keyBoardHandler;
+  std::unique_ptr<game::InputHandler> playerController;
   int score = 0;
 };
 } // namespace game

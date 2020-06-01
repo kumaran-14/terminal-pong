@@ -18,17 +18,20 @@ public:
   Ball(double y, double x, double dy, double dx, int32_t length,
        const std::string &body_str);
 
-  void moveRight();
-
-  void moveLeft();
-
-  void moveDown();
-
-  void moveUp();
-
   void update(game::World *world, game::Game* pongGame) override;
 
   void render(game::Screen *screen) override;
+
+  void setXVel(double);
+
+  void setYVel(double);
+
+
+  [[nodiscard]] double getX() const;
+
+  [[nodiscard]] double getY() const;
+
+  [[nodiscard]] int getLength() const;
 
 private:
   double y, x, dx, dy;
