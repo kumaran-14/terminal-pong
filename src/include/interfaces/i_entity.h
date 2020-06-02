@@ -15,18 +15,17 @@ namespace world {
  */
 class IEntity {
 public:
+  virtual ~IEntity() = default;
 
-    virtual ~IEntity() = default;
+  /*
+   * Update position/dimension using some logic
+   */
+  virtual void update(game::World *world, game::Game *pongGame) = 0;
 
-    /*
-     * Update position/dimension using some logic
-     */
-    virtual void update(game::World* world, game::Game* pongGame) = 0;
-
-    /*
-     *  Display entity on screen
-     */
-    virtual void render(game::Screen* screen) = 0;
+  /*
+   *  Display entity on screen
+   */
+  virtual void render(game::Screen *screen) = 0;
 };
 
-}
+} // namespace world

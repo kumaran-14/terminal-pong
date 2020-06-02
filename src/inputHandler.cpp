@@ -3,9 +3,10 @@
  */
 
 #include "inputHandler.h"
+#include "ball.h"
 #include "paddle.h"
 #include "world.h"
-#include "ball.h"
+#include <constants.h>
 
 namespace game {
 InputHandler::InputHandler(std::unique_ptr<game::ICommand> moveLeft,
@@ -28,18 +29,20 @@ ICommand *InputHandler::handlePlayerInput() {
 }
 
 ICommand *InputHandler::handleAiInput(game::World *world) {
-  auto paddle = dynamic_cast<world::Paddle*>(world->getPaddle2());
-  auto ball = dynamic_cast<world::Ball*>(world->getBall());
+  auto paddle = dynamic_cast<world::Paddle *>(world->getPaddle2());
+  auto ball = dynamic_cast<world::Ball *>(world->getBall());
   // calculate distance from ball to paddle center;
-  double dx = - (paddle->getX() + (paddle->getLength() / 2.0) - ball->getX());
+  double dx = -(paddle->getX() + (paddle->getLength() / 2.0) - ball->getX());
 
-  if (dx <= -1)
-    dx = -2;
-  if (dx >= 1)
-    dx = 2;
+  if (dx <= -constants::MAX_PADDLE_X_VELOCITY)
+    dx = -constants::MAX_PADDLE_X_VELOCITY;
+  if (dx >= constants::MAX_PADDLE_X_VELOCITY)
+    dx = constants::MAX_PADDLE_X_VELOCITY;
 
-  if(dx < 0) return this->leftArrow.get();
-  if(dx > 0) return this->rightArrow.get();
+  if (dx < 0)
+    return this->leftArrow.get();
+  if (dx > 0)
+    return this->rightArrow.get();
   return nullptr;
 }
 } // namespace game

@@ -1,6 +1,6 @@
 /*
  * screen.h
- * Game Screen using ncurses API
+ * Game graphics interface using ncurses API
  */
 
 #pragma once
@@ -12,6 +12,9 @@
 
 namespace game {
 
+/*
+ * Interface for ncurses stdscr
+ */
 class Screen {
 public:
   Screen();
@@ -22,6 +25,9 @@ public:
 
   void drawAtPosition(uint32_t y, uint32_t x, const std::string &str);
 
+  /*
+   * Update objects position in screen memory
+   */
   void refresh();
 
   display::Window *getArena();
@@ -34,7 +40,14 @@ public:
   ~Screen();
 
 private:
+  /*
+   * Main Screen dimensions
+   */
   uint32_t height, width;
+
+  /*
+   * Main screen window where game is rendered.
+   */
   std::unique_ptr<display::Window> arena;
 };
 

@@ -6,6 +6,7 @@
 #include "interfaces/i_command.h"
 
 namespace game {
+
 class MoveRightCommand : public ICommand {
 public:
   void execute(world::IEntity *entity) override;

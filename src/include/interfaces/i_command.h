@@ -7,9 +7,16 @@
 #include "interfaces/i_entity.h"
 
 namespace game {
+
+/*
+ * Abstract class for all common commands
+ */
 class ICommand {
 public:
   virtual ~ICommand() = default;
-  virtual void execute(world::IEntity*) = 0;
+  /*
+   * Implementation for every command
+   */
+  virtual void execute(world::IEntity *) = 0;
 };
-}
+} // namespace game

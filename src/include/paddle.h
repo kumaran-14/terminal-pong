@@ -21,16 +21,20 @@ public:
 
   void moveLeft();
 
-  void update(game::World *world, game::Game* pongGame) override;
-
   [[nodiscard]] double getX() const;
 
   [[nodiscard]] double getY() const;
 
   [[nodiscard]] int getLength() const;
 
+  /*
+   * see @IEntity
+   */
+  void update(game::World *world, game::Game *pongGame) override;
 
-
+  /*
+   * see @IEntity
+   */
   void render(game::Screen *screen) override;
 
 private:

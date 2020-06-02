@@ -29,10 +29,7 @@ void ncurses::setScreenDimensions(uint32_t &height, uint32_t &width) {
 
 void ncurses::drawBox() { box(stdscr, 0, 0); };
 
-void ncurses::erase() {
-  ::erase();
-}
-
+void ncurses::erase() { ::erase(); }
 
 void ncurses::drawBox(ncurses::window_t *win) { box(win, 0, 0); };
 
@@ -60,8 +57,6 @@ ncurses::window_t *ncurses::createWindow(uint32_t height, uint32_t width,
 
 void ncurses::refresh(ncurses::window_t *win) { wrefresh(win); }
 
-void ncurses::erase(window_t* win) {
-  ::werase(win);
-}
+void ncurses::erase(window_t *win) { ::werase(win); }
 
 void ncurses::destroyWindow(ncurses::window_t *win) { ::delwin(win); }

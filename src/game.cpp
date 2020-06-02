@@ -1,18 +1,16 @@
 /*
  * game.cpp
- * Implment Game class
+ * Implement Game class
  */
 
 #include "game.h"
 #include "constants.h"
-#include <memory>
 #include <chrono>
+#include <memory>
 
 namespace game {
 
-void Game::start() {
-  this->gameLoop();
-}
+void Game::start() { this->gameLoop(); }
 void Game::end() { this->isRunning = false; }
 Game::Game(std::unique_ptr<game::World> &world,
            std::unique_ptr<game::Screen> &screen,
@@ -24,7 +22,7 @@ void Game::gameLoop() {
   using namespace std::chrono;
   auto previousFST = high_resolution_clock::now();
   auto frameLag = nanoseconds::zero();
-  while(this->isRunning) {
+  while (this->isRunning) {
     auto currentFST = high_resolution_clock::now();
     auto timeElapsed = currentFST - previousFST;
     previousFST = currentFST;
@@ -40,19 +38,17 @@ void Game::gameLoop() {
 }
 
 void Game::processInputs() {
-  ICommand* command = this->playerController->handlePlayerInput();
-  if(command) {
+  ICommand *command = this->playerController->handlePlayerInput();
+  if (command) {
     command->execute(this->world->getPaddle1());
   }
   command = this->playerController->handleAiInput(this->world.get());
-  if(command){
+  if (command) {
     command->execute(this->world->getPaddle2());
   }
 }
 
-void Game::update() {
-  this->world->update(this);
-}
+void Game::update() { this->world->update(this); }
 void Game::render() {
   auto arena = this->screen->getArena();
   arena->erase();

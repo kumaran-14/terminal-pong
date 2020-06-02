@@ -10,6 +10,7 @@
 #include <utility>
 
 namespace game {
+
 /*
  * Defines the physics of the game and interactions of game enities
  */
@@ -20,9 +21,15 @@ public:
         std::unique_ptr<world::IEntity> &paddle_2,
         std::unique_ptr<world::IEntity> &ball);
 
-  void update(game::Game*);
+  /*
+   * Updates game entities according to defined physics
+   */
+  void update(game::Game *);
 
-  void render(game::Screen*);
+  /*
+   * Display game entities
+   */
+  void render(game::Screen *);
 
   [[nodiscard]] uint32_t getHeight() const;
   [[nodiscard]] uint32_t getWidth() const;
@@ -31,11 +38,10 @@ public:
 
   world::IEntity *getPaddle2();
 
-  world::IEntity* getBall();
+  world::IEntity *getBall();
 
 private:
   uint32_t height{}, width{};
   std::unique_ptr<world::IEntity> paddle_1, paddle_2, ball;
-
 };
 } // namespace game

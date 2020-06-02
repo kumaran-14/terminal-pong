@@ -18,14 +18,19 @@ public:
   Ball(double y, double x, double dy, double dx, int32_t length,
        const std::string &body_str);
 
-  void update(game::World *world, game::Game* pongGame) override;
+  /*
+   * @see IEntity
+   */
+  void update(game::World *world, game::Game *pongGame) override;
 
+  /*
+   * @see IEntity
+   */
   void render(game::Screen *screen) override;
 
   void setXVel(double);
 
   void setYVel(double);
-
 
   [[nodiscard]] double getX() const;
 
@@ -34,7 +39,10 @@ public:
   [[nodiscard]] int getLength() const;
 
 private:
-  double y, x, dx, dy;
+
+  double y, x;
+
+  double dx, dy;
 
   int length;
 
