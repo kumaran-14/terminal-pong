@@ -88,11 +88,10 @@ int main(int argc, char **argv) {
     auto pongGame = make_unique<game::Game>(world, screen, keyboardHandler);
     pongGame->start();
 
-  } catch (std::exception &err) {
-    std::cerr << err.what() << std::endl;
+  } catch (exception &err) {
+    cerr << err.what() << std::endl;
   }
-  std::cout << "got dimensions";
-  //
-  std::cout << std::endl;
+
+  cout << std::endl;
   return 0;
 }
