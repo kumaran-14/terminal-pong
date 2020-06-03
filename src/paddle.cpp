@@ -22,7 +22,7 @@ void Paddle::moveLeft() { this->x -= this->dx; };
 void Paddle::update(game::World *world, game::Game *pongGame) {
   if (this->x <= 1)
     this->x = 1;
-  if (this->x + this->length - 1 >= world->getWidth())
+  if (this->x + this->length >= world->getWidth()-1)
     this->x = world->getWidth() - this->length - 1;
 }
 
