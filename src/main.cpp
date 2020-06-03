@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
         cout << " -h, --help            print Pong commandline options "
                 "(currently set)\n";
         cout << " -v, --version         print Pong version\n";
-        cout << "\nFor more information: githublink" << endl;
+        cout << "\nFor more information: https://github.com/kumaran-14/terminal-pong" << endl;
       } else {
         cout << "Bad option: " << arg << "\n";
         cout << "Try 'pong -h' for more information." << endl;

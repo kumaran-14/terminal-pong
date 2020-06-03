@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-#rm -rf ./build
+cd ..
+rm -rf ./build
+mkdir build
 
-if [ "$1" == "rebuild" ]; then
-  CC=clang CXX=clang++ meson build --reconfigure
-fi
+CC=gcc CXX=g++ meson build --reconfigure
 
 cd build
 ninja
 
-./pong
+
